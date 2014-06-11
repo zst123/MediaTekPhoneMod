@@ -38,7 +38,7 @@ public class FixDevSettings {
 
     private static PreferenceScreen mScreen;
     private static int mResId = 0;
-    private static List<String> devOptKeys = new ArrayList<String>(Arrays.asList(
+    private static final List<String> DEV_OPT_KEYS = new ArrayList<String>(Arrays.asList(
             "enforce_read_external",
             "local_backup_password",
             "debug_input_category",
@@ -76,7 +76,7 @@ public class FixDevSettings {
                     PreferenceGroup pg = (PreferenceGroup) param.thisObject;
                     if (pg != null && pg == mScreen) {
                         String prefKey = ((Preference)param.args[0]).getKey();
-                        if (devOptKeys.contains(prefKey)) {
+                        if (DEV_OPT_KEYS.contains(prefKey)) {
                             if (DEBUG) log("ignoring removePreference called from developer options; key=" + prefKey);
                             param.setResult(false);
                             return;
